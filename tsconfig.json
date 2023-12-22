@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"]
+    },
+    "strictNullChecks": true
   },
   "extends": "expo/tsconfig.base"
 }
