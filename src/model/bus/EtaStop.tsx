@@ -19,5 +19,6 @@ type EtaStop = {
   rmk_tc: string | undefined,
   rmk_sc: string | undefined,
   rmk_en: string | undefined,
+  origin_stop: StopDetail | undefined,
   data_timestamp: string | undefined,
 }

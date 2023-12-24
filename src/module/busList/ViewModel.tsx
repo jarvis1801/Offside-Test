@@ -27,7 +27,7 @@ export default function BusListViewModel(Repository = BusRepository()) {
 
   const injectStopDetailIntoEtaList = (filteredEtaList: EtaStopResponse, stopDetail: StopDetailResponse) => {
     filteredEtaList.data.map(item => {
-      item['originStop'] = stopDetail.data
+      item['origin_stop'] = stopDetail.data
       item
     })
   }
