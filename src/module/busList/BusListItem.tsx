@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
   route: {
     fontSize: 28,
     fontWeight: 'bold',
-    width: 120,
+    width: 90,
   },
   destination_container: {
     flex: 1,
   },
   destination: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
     paddingHorizontal: 4,
   },
