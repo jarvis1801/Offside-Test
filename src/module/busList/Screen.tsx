@@ -1,9 +1,11 @@
-import { FlatList, View, RefreshControl } from 'react-native'
+import { FlatList, View, RefreshControl, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useEffect } from 'react'
 import BusListViewModel from './ViewModel'
 import BusListItem from './BusListItem'
 
-import { getCurrentLocale } from '../../util/LanguageUtil'
+import { Button } from 'react-native-paper'
+
+import { getCurrentLocale, changeLocale } from '../../util/LanguageUtil'
 
 export default function BusListScreen({ navigation }) {
 
@@ -36,15 +38,36 @@ export default function BusListScreen({ navigation }) {
     });
   }
 
+  const onLangClick = () => {
+    changeLocale()
+  }
+
   return (
-    <FlatList
-      data={viewModel.busRouteList}
-      ItemSeparatorComponent={() => Separator}
-      renderItem={({item}) => <BusListItem data={item} onItemClick={(data) => goToDetailPage(data)} />}
-      keyExtractor={(item, index) => `${item['route']}-${index}`}
-      refreshControl={
-        <RefreshControl refreshing={viewModel.loading} onRefresh={onRefresh} />
-      }
-    />
+    <View>
+      <FlatList
+        data={viewModel.busRouteList}
+        ItemSeparatorComponent={() => Separator}
+        renderItem={({item}) => <BusListItem data={item} onItemClick={(data) => goToDetailPage(data)} />}
+        keyExtractor={(item, index) => `${item['route']}-${index}`}
+        refreshControl={
+          <RefreshControl refreshing={viewModel.loading} onRefresh={onRefresh} />
+        }
+      />
+      <TouchableOpacity onPress={() => onLangClick()}>
+        <Button style={styles.button_lang}>Language</Button>
+      </TouchableOpacity>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  button_lang: {
+    position: 'absolute',
+    right: 30,
+    bottom: 30,
+    backgroundColor: '#20c997'
+  }
+})
