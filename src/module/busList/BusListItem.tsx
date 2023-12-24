@@ -2,8 +2,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { getEtaMinuteByDate } from '../../util/DateUtil'
 
-const BusListItem = ({data}) => (
-  <TouchableOpacity style={{ flex: 1 }}>
+const BusListItem = ({data, onItemClick}) => (
+  <TouchableOpacity style={{ flex: 1 }} onPress={() => onItemClick(data)}>
     <View style={styles.container}>
       <Text style={styles.route}>{data['route']}</Text>
       <View style={[styles.column_container, styles.destination_container]}>
@@ -11,7 +11,7 @@ const BusListItem = ({data}) => (
           <Text style={styles.destination_label}>往</Text>
           <Text style={styles.destination}>{data['dest_tc']}</Text>
         </View>
-        <Text style={styles.origin_stop}>{data['originStop']['name_tc']}</Text>
+        <Text style={styles.origin_stop}>{data['origin_stop']['name_tc']}</Text>
       </View>
       <View style={[styles.column_container, styles.minute_container]}>
         <Text style={styles.minute}>{getEtaMinuteByDate(data['eta'])}</Text>
