@@ -2,12 +2,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { getEtaMinuteByDate } from '../../util/DateUtil'
 
-import { useTranslation } from "react-i18next"
-import { getCurrentLocale } from '../../util/LanguageUtil'
+import { getCurrentLocale, t } from '../../util/LanguageUtil'
 
 const BusListItem = ({data, onItemClick}) => {
   
-  const { t } = useTranslation()
   const originStop = getCurrentLocale() == "en" ? data['origin_stop']['name_en'] : data['origin_stop']['name_tc']
   const dest_tc = getCurrentLocale() == "en" ? data['dest_en'] : data['dest_tc']
 

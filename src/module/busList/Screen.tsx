@@ -3,6 +3,8 @@ import React, { useEffect } from 'react'
 import BusListViewModel from './ViewModel'
 import BusListItem from './BusListItem'
 
+import { getCurrentLocale } from '../../util/LanguageUtil'
+
 export default function BusListScreen({ navigation }) {
 
   const viewModel = BusListViewModel()
@@ -21,8 +23,10 @@ export default function BusListScreen({ navigation }) {
 
   const goToDetailPage = (data: EtaStop) => {
     const stopDetail = data['origin_stop']
+    const stopName = getCurrentLocale() == 'en' ? stopDetail?.name_en : stopDetail?.name_tc
+
     navigation.navigate('BusDetail', {
-      stopName: stopDetail?.name_tc,
+      stopName: stopName,
       stopId: stopDetail?.stop,
       route: data['route'],
       direction: data['dir'],

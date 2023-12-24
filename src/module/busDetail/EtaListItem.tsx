@@ -2,17 +2,22 @@ import { View, Text, StyleSheet } from 'react-native'
 
 import { getEtaMinuteByDate } from '../../util/DateUtil'
 
-const EtaListItem = ({data}) => (
-  <View style={styles.container}>
-    <Text style={styles.minute}>{getEtaMinuteByDate(data['eta'])}</Text>
-    <Text style={styles.minute_label}>分鐘</Text>
-    {
-      data['rmk_tc'] != null && data['rmk_tc'] != '' && (
-        <Text style={styles.remark}>{data['rmk_tc']}</Text>
-      )
-    }
-  </View>
-)
+import { getCurrentLocale, t } from '../../util/LanguageUtil'
+
+const EtaListItem = ({data}) => {
+  const remark = getCurrentLocale() == 'en' ? data['rmk_en'] : data['rmk_tc']
+  return(
+    <View style={styles.container}>
+      <Text style={styles.minute}>{getEtaMinuteByDate(data['eta'])}</Text>
+      <Text style={styles.minute_label}>{t('minute_label')}</Text>
+      {
+        remark != null && remark != '' && (
+          <Text style={styles.remark}>{remark}</Text>
+        )
+      }
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {

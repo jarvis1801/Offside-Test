@@ -18,8 +18,6 @@ export default function BusDetailScreen({ route, navigation }) {
     viewModel.getEtaList()
   }, [])
 
-  const Separator = <View style={{ backgroundColor: "gray", height: 1 }} />
-
   return (
     <View style={styles.container}>
       <MapView 
