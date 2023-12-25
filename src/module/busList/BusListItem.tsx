@@ -4,7 +4,11 @@ import { getEtaMinuteByDate } from '../../util/DateUtil'
 
 import { getCurrentLocale, t } from '../../util/LanguageUtil'
 
+import { useTheme } from 'react-native-paper'
+
 const BusListItem = ({data, onItemClick}) => {
+
+  const theme = useTheme()
   
   const originStop = getCurrentLocale() == "en" ? data['origin_stop']['name_en'] : data['origin_stop']['name_tc']
   const dest_tc = getCurrentLocale() == "en" ? data['dest_en'] : data['dest_tc']
@@ -12,17 +16,17 @@ const BusListItem = ({data, onItemClick}) => {
   return(
     <TouchableOpacity style={{ flex: 1 }} onPress={() => onItemClick(data)}>
       <View style={styles.container}>
-        <Text style={styles.route}>{data['route']}</Text>
+        <Text style={{color: theme.colors.onBackground, ...styles.route}}>{data['route']}</Text>
         <View style={[styles.column_container, styles.destination_container]}>
           <View style={[styles.row_container]}>
-            <Text style={styles.destination_label}>{t('destination_label')}</Text>
-            <Text style={styles.destination}>{dest_tc}</Text>
+            <Text style={{color: theme.colors.onBackground, ...styles.destination_label}}>{t('destination_label')}</Text>
+            <Text style={{color: theme.colors.onBackground, ...styles.destination}}>{dest_tc}</Text>
           </View>
-          <Text style={styles.origin_stop}>{originStop}</Text>
+          <Text style={{color: theme.colors.onBackground, ...styles.origin_stop}}>{originStop}</Text>
         </View>
         <View style={[styles.column_container, styles.minute_container]}>
-          <Text style={styles.minute}>{getEtaMinuteByDate(data['eta'])}</Text>
-          <Text style={styles.minute_label}>{t('minute_label')}</Text>
+          <Text style={{color: theme.colors.primary, ...styles.minute}}>{getEtaMinuteByDate(data['eta'])}</Text>
+          <Text style={{color: theme.colors.onBackground, ...styles.minute_label}}>{t('minute_label')}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -77,7 +81,6 @@ const styles = StyleSheet.create({
   },
   minute: {
     fontSize: 40,
-    color: "#375EAC",
   },
   minute_label: {
     fontSize: 12,

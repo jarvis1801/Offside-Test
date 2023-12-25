@@ -1,16 +1,19 @@
-import { useColorScheme, StatusBar, StyleSheet } from 'react-native'
+import { StatusBar, StyleSheet } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import Navigation from './src/navigation/Navigation'
 
+import { PaperProvider } from 'react-native-paper'
 
-import { DefaultTheme, DarkTheme } from '@react-navigation/native'
+import { getCurrentTheme, setStatusBarColor } from './src/theme/Theme'
 
 export default function App() {
-  const scheme = useColorScheme()
+  setStatusBarColor()
 
   return (
     <SafeAreaProvider style={styles.container}>
-      <Navigation theme={scheme === 'dark' ? DarkTheme : DefaultTheme} />
+      <PaperProvider theme={getCurrentTheme()}>
+        <Navigation theme={getCurrentTheme()} />
+      </PaperProvider>
     </SafeAreaProvider>
   )
 }
@@ -18,6 +21,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      marginTop: StatusBar.currentHeight
   },
 })

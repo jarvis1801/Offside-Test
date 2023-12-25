@@ -6,7 +6,7 @@ import BusDetailScreen from '../module/busDetail/Screen'
 
 const Stack = createNativeStackNavigator()
 
-const Navigation = (props: { theme: Theme }) => {
+const Navigation = (props: { theme }) => {
 
   return(
     <NavigationContainer theme={props.theme}>

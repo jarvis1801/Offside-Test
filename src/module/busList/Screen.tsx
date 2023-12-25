@@ -1,4 +1,4 @@
-import { FlatList, View, RefreshControl, StyleSheet, TouchableOpacity } from 'react-native'
+import { FlatList, View, RefreshControl, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import React, { useEffect } from 'react'
 import BusListViewModel from './ViewModel'
 import BusListItem from './BusListItem'
@@ -7,7 +7,10 @@ import { Button } from 'react-native-paper'
 
 import { getCurrentLocale, changeLocale } from '../../util/LanguageUtil'
 
+import { useTheme } from 'react-native-paper'
+
 export default function BusListScreen({ navigation }) {
+  const theme = useTheme()
 
   const viewModel = BusListViewModel()
 
@@ -43,7 +46,7 @@ export default function BusListScreen({ navigation }) {
   }
 
   return (
-    <View>
+    <View style={{ backgroundColor: theme.colors.background }}>
       <FlatList
         data={viewModel.busRouteList}
         ItemSeparatorComponent={() => Separator}
@@ -54,7 +57,9 @@ export default function BusListScreen({ navigation }) {
         }
       />
       <TouchableOpacity onPress={() => onLangClick()}>
-        <Button style={styles.button_lang}>Language</Button>
+        <Button style={{ backgroundColor: theme.colors.secondaryContainer, ...styles.button_lang }}>
+          <Text style={{ color: theme.colors.onSecondaryContainer }}>Language</Text>
+        </Button>
       </TouchableOpacity>
     </View>
   )
@@ -68,6 +73,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 30,
     bottom: 30,
-    backgroundColor: '#20c997'
   }
 })

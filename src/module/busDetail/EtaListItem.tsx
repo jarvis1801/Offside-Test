@@ -3,16 +3,19 @@ import { View, Text, StyleSheet } from 'react-native'
 import { getEtaMinuteByDate } from '../../util/DateUtil'
 
 import { getCurrentLocale, t } from '../../util/LanguageUtil'
-
+import { useTheme } from 'react-native-paper'
+  
 const EtaListItem = ({data}) => {
+  const theme = useTheme()
+
   const remark = getCurrentLocale() == 'en' ? data['rmk_en'] : data['rmk_tc']
   return(
     <View style={styles.container}>
-      <Text style={styles.minute}>{getEtaMinuteByDate(data['eta'])}</Text>
-      <Text style={styles.minute_label}>{t('minute_label')}</Text>
+      <Text style={{ color: theme.colors.primary, ...styles.minute }}>{getEtaMinuteByDate(data['eta'])}</Text>
+      <Text style={{ color: theme.colors.onBackground, ...styles.minute_label }}>{t('minute_label')}</Text>
       {
         remark != null && remark != '' && (
-          <Text style={styles.remark}>{remark}</Text>
+          <Text style={{ color: theme.colors.outline, ...styles.remark }}>{remark}</Text>
         )
       }
     </View>
@@ -32,7 +35,6 @@ const styles = StyleSheet.create({
     width: 25,
     fontSize: 20,
     marginVertical: -5,
-    color: "#375EAC",
     textAlign: 'right'
   },
   minute_label: {
@@ -41,7 +43,6 @@ const styles = StyleSheet.create({
   },
   remark: {
     fontSize: 19,
-    color: '#888888',
     marginVertical: -1,
   }
 })
