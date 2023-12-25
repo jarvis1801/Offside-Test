@@ -10,7 +10,7 @@ export default function App() {
   setStatusBarColor()
 
   return (
-    <SafeAreaProvider style={styles.container}>
+    <SafeAreaProvider style={{ backgroundColor: getCurrentTheme().colors.background, ...styles.container}}>
       <PaperProvider theme={getCurrentTheme()}>
         <Navigation theme={getCurrentTheme()} />
       </PaperProvider>
@@ -21,5 +21,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
+      paddingTop: StatusBar.currentHeight
   },
 })
