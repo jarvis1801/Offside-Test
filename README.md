@@ -33,6 +33,14 @@
 3. cmd enter 'npm run start', then expo will run
 4. cmd 'press a' open Android app
 
+###### Run test
+1. cmd go to the Offsite test folder
+2. cmd enter 'npm run test'
+
+###### Run lint
+1. cmd go to the Offsite test folder
+2. cmd enter 'npm run lint'
+
 ## Development
 ###### Prerequisites
 * Design pattern MVVM: Using MVVM increase the project readability, testability, maintainability
