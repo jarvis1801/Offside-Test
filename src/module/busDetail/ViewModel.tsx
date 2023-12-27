@@ -25,7 +25,6 @@ export default function BusDetailViewModel(
       etaStop.service_type == serviceType
     ).sort((a, b) => (a?.eta_seq ?? -1) - (b?.eta_seq ?? -1))
     
-    console.log(filteredEtaList)
     setEtaList(filteredEtaList)
     setLoading(false)
   }
