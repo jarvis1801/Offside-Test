@@ -21,6 +21,18 @@
 * Large project size: Expo has dependencies to make their tools, these will make the app size larger
 * Ejecting Limitations: some library work only for expo, if eject expo, you need the replacemnet for the library
 
+## Execution setup
+###### Prerequisites
+* Node.js installed on your system
+* add npm to environment variable
+* Android device need to be open the usb debug mode and connect the device to your computer
+
+###### Install App to device
+1. cmd enter 'git clone https://github.com/jarvis1801/Offside-Test.git' 
+2. cmd go to the Offsite test folder and enter 'npm install'
+3. cmd enter 'npm run start', then expo will run
+4. cmd 'press a' open Android app
+
 ## Development
 ###### Prerequisites
 * Design pattern MVVM: Using MVVM increase the project readability, testability, maintainability
